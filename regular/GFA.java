@@ -16,7 +16,7 @@ import general.words.Symbol;
 import general.words.Word;
 
 import regular.expressions.RE;
-import regular.expressions.REStar;
+import regular.expressions.Star;
 
 // Generalised Finite State Automaton
 public class GFA extends FSA {
@@ -75,7 +75,7 @@ public class GFA extends FSA {
             if (q0.equals(qc) || f.contains(qc)) continue;
             RE rei = null;
             if (dn.has(qc, qc)) {
-                rei = new REStar((RE)Transitions.getTransitionValues(dn.get(qc, qc))[0]);
+                rei = new Star((RE)Transitions.getTransitionValues(dn.get(qc, qc))[0]);
             }
             for (Transition ti: dn.getIncoming(qc)) {
                 State qi = ti.q1;

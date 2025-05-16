@@ -18,7 +18,6 @@ import general.automatons.transitions.Transitions;
 import general.words.Symbol;
 
 import regular.expressions.RE;
-import regular.expressions.RESymbol;
 
 // Finite State Automaton
 public abstract class FSA extends Automaton {
@@ -76,7 +75,7 @@ public abstract class FSA extends Automaton {
                 transitionTable[0][i] = "null";
             } else {
                 transitionTable[0][i] = a.toString();
-                if (a instanceof RE) {
+                if (!(a instanceof Symbol) && a instanceof RE) {
                     transitionTable[0][i] = "RE(" + transitionTable[0][i] + ")";
                 }
             }
@@ -139,14 +138,7 @@ public abstract class FSA extends Automaton {
         Transitions dn = new Transitions();
         for (State q1: d.keySet()) {
             for (TransitionValue a: d.get(q1).keySet()) {
-                RE re;
-                if (a == null) {
-                    re = null;
-                } else if (a instanceof Symbol) {
-                    re = new RESymbol((Symbol)a);
-                } else {
-                    re = (RE)a;
-                }
+                RE re = (RE)a;
                 for (State q2: d.get(q1).get(a)) {
                     if (dn.has(q1, q2)) {
                         RE reEx = (RE)dn.get(q1, q2)[0].a;

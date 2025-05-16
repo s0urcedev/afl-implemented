@@ -4,12 +4,12 @@ import general.automatons.alphabets.Alphabet;
 
 import general.words.Symbol;
 
-public class REUnion extends RE {
+public class Union implements RE {
     
     public final RE left;
     public final RE right;
 
-    public REUnion(RE left, RE right) {
+    public Union(RE left, RE right) {
         this.left = left;
         this.right = right;
     }
@@ -21,8 +21,12 @@ public class REUnion extends RE {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        REUnion rc = (REUnion)o;
+        Union rc = (Union)o;
         return left.equals(rc.left) && right.equals(rc.right);
+    }
+
+    public int hashCode() {
+        return toString().hashCode();
     }
 
     public boolean fits(Alphabet s) {

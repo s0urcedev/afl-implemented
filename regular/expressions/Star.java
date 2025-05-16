@@ -4,25 +4,29 @@ import general.automatons.alphabets.Alphabet;
 
 import general.words.Symbol;
 
-public class REStar extends RE {
+public class Star implements RE {
     
     public final RE value;
 
-    public REStar(RE value) {
+    public Star(RE value) {
         this.value = value;
     }
 
     public String toString() {
         String valueS = value.toString();
-        if (!(value instanceof RESymbol)) valueS = "(" + valueS + ")";
+        if (!(value instanceof Symbol)) valueS = "(" + valueS + ")";
         return valueS + "*";
     }
 
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        REStar rc = (REStar)o;
+        Star rc = (Star)o;
         return value.equals(rc.value);
+    }
+
+    public int hashCode() {
+        return toString().hashCode();
     }
 
     public boolean fits(Alphabet s) {

@@ -6,13 +6,13 @@ import general.words.Symbol;
 import general.words.Word;
 
 // Regular Expression
-public abstract class RE implements TransitionValue {
+public interface RE extends TransitionValue {
 
     private static RE toRE(String[] input, int si, int ei) {
         if (si > ei) throw new IllegalArgumentException("Invalid expression passed: Invalid indices");
         if (input[si].equals("+") || input[si].equals("*") || input[si].equals(")"))
             throw new IllegalArgumentException("Invalid expression passed: Invalid symbol");
-        if (si == ei) return new RESymbol(input[si]);
+        if (si == ei) return new Symbol(input[si]);
         
         int parCount = 0;
         boolean pcWasZero = false;
@@ -36,7 +36,7 @@ public abstract class RE implements TransitionValue {
         if (input[si].equals("(") && input[ei].equals(")") && !pcWasZero) return toRE(input, si + 1, ei - 1);
 
         if (pi != -1) {
-            return new REUnion(toRE(input, si, pi - 1), toRE(input, pi + 1, ei));
+            return new Union(toRE(input, si, pi - 1), toRE(input, pi + 1, ei));
         } else {
             int ein = si;
             if (input[si].equals("(")) {
@@ -49,9 +49,9 @@ public abstract class RE implements TransitionValue {
             }
             while (ein + 1 <= ei && input[ein + 1].equals("*")) ein ++;
             if (ein == ei && input[ein].equals("*")) {
-                return new REStar(toRE(input, si, ein - 1));
+                return new Star(toRE(input, si, ein - 1));
             } else {
-                return new REConcat(toRE(input, si, ein), toRE(input, ein + 1, ei));
+                return new Concat(toRE(input, si, ein), toRE(input, ein + 1, ei));
             }
         }
     }
@@ -64,21 +64,18 @@ public abstract class RE implements TransitionValue {
         return toRE(input.chars().mapToObj(c -> (char)c).toList().stream().map(String::valueOf).toList().toArray(new String[0]));
     }
     
-    public abstract String toString();
+    public String toString();
 
-    public abstract boolean equals(Object o);
+    public boolean equals(Object o);
+    public int hashCode();
 
-    public int hashCode() {
-        return toString().hashCode();
-    }
+    public boolean matches(Symbol[] word, int si, int ei);
 
-    public abstract boolean matches(Symbol[] word, int si, int ei);
-
-    public boolean matches(Symbol[] word) {
+    public default boolean matches(Symbol[] word) {
         return matches(word, 0, word.length - 1);
     }
 
-    public boolean matches(Word word) {
+    public default boolean matches(Word word) {
         return matches(word.toArray());
     }
 
@@ -88,7 +85,7 @@ public abstract class RE implements TransitionValue {
         for (int i = reArray.length - 1; i >= 0; i --) {
             if (reArray[i] != null) {
                 if (res != null) {
-                    res = new REUnion(reArray[i], res);
+                    res = new Union(reArray[i], res);
                 } else {
                     res = reArray[i];
                 }
@@ -103,7 +100,7 @@ public abstract class RE implements TransitionValue {
         for (int i = reArray.length - 1; i >= 0; i --) {
             if (reArray[i] != null) {
                 if (res != null) {
-                    res = new REConcat(reArray[i], res);
+                    res = new Concat(reArray[i], res);
                 } else {
                     res = reArray[i];
                 }

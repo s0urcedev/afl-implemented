@@ -4,23 +4,22 @@ import general.automatons.alphabets.Alphabet;
 
 import general.words.Symbol;
 
-public class REConcat extends RE {
+public class Concat implements RE {
     
     public final RE left;
     public final RE right;
 
-    public REConcat(RE left, RE right) {
+    public Concat(RE left, RE right) {
         this.left = left;
         this.right = right;
     }
 
-
     public String toString() {
         String leftS = left.toString();
-        if (left instanceof REUnion) leftS = "(" + leftS + ")";
+        if (left instanceof Union) leftS = "(" + leftS + ")";
 
         String rightS = right.toString();
-        if (right instanceof REUnion) rightS = "(" + rightS + ")";
+        if (right instanceof Union) rightS = "(" + rightS + ")";
 
         return leftS + rightS;
     }
@@ -28,8 +27,12 @@ public class REConcat extends RE {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        REConcat rc = (REConcat)o;
+        Concat rc = (Concat)o;
         return left.equals(rc.left) && right.equals(rc.left);
+    }
+
+    public int hashCode() {
+        return toString().hashCode();
     }
 
     public boolean fits(Alphabet s) {

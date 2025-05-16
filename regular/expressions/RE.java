@@ -1,8 +1,9 @@
 package regular.expressions;
 
-import general.TransitionValue;
-import general.Word;
-import general.Symbol;
+import general.transitions.TransitionValue;
+
+import general.words.Symbol;
+import general.words.Word;
 
 // Regular Expression
 public abstract class RE implements TransitionValue {

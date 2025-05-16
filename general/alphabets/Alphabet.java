@@ -1,10 +1,10 @@
-package regular;
+package general.alphabets;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-import general.Symbol;
+import general.words.Symbol;
 
 public class Alphabet extends LinkedHashSet<Symbol> {
 

@@ -3,13 +3,18 @@ package regular;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import general.State;
-import general.States;
-import general.Symbol;
-import general.Transition;
-import general.TransitionValue;
-import general.Transitions;
-import general.Word;
+import general.alphabets.Alphabet;
+import general.alphabets.eAlphabet;
+
+import general.states.State;
+import general.states.States;
+
+import general.transitions.Transition;
+import general.transitions.TransitionValue;
+import general.transitions.Transitions;
+
+import general.words.Symbol;
+import general.words.Word;
 
 // Non-Deterministic Finite State Automaton with epsilon transitions
 public class eNFA extends FSA {

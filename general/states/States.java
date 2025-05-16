@@ -1,4 +1,4 @@
-package general;
+package general.states;
 
 import java.util.Arrays;
 import java.util.Collection;

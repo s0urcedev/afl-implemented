@@ -1,6 +1,6 @@
-package general;
+package general.transitions;
 
-import regular.Alphabet;
+import general.alphabets.Alphabet;
 
 public interface TransitionValue {
 

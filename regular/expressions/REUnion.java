@@ -1,24 +1,17 @@
 package regular.expressions;
 
-import general.Symbol;
-import regular.Alphabet;
+import general.alphabets.Alphabet;
+
+import general.words.Symbol;
 
 public class REUnion extends RE {
     
-    private RE left;
-    private RE right;
+    public final RE left;
+    public final RE right;
 
     public REUnion(RE left, RE right) {
         this.left = left;
         this.right = right;
-    }
-
-    public RE getLeft() {
-        return left;
-    }
-
-    public RE getRight() {
-        return right;
     }
 
     public String toString() {
@@ -29,7 +22,7 @@ public class REUnion extends RE {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         REUnion rc = (REUnion)o;
-        return left.equals(rc.getLeft()) && right.equals(rc.getRight());
+        return left.equals(rc.left) && right.equals(rc.right);
     }
 
     public boolean fits(Alphabet s) {

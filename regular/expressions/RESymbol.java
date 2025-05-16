@@ -1,11 +1,12 @@
 package regular.expressions;
 
-import general.Symbol;
-import regular.Alphabet;
+import general.alphabets.Alphabet;
+
+import general.words.Symbol;
 
 public class RESymbol extends RE {
     
-    private Symbol value;
+    private final Symbol value;
 
     public RESymbol(Symbol value) {
         this.value = value;

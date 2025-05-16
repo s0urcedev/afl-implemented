@@ -1,8 +1,8 @@
-package regular;
+package general.alphabets;
 
 import java.util.Collection;
 
-import general.Symbol;
+import general.words.Symbol;
 
 // Alphabet with epsilon
 public class eAlphabet extends Alphabet {

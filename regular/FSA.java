@@ -5,13 +5,19 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import general.Automaton;
-import general.State;
-import general.States;
 import general.StringWrapper;
-import general.Symbol;
-import general.Transition;
-import general.TransitionValue;
-import general.Transitions;
+
+import general.alphabets.Alphabet;
+
+import general.states.State;
+import general.states.States;
+
+import general.transitions.Transition;
+import general.transitions.TransitionValue;
+import general.transitions.Transitions;
+
+import general.words.Symbol;
+
 import regular.expressions.RE;
 import regular.expressions.RESymbol;
 

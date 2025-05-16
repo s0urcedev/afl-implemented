@@ -1,10 +1,14 @@
 package regular;
 
-import general.*;
-import general.States;
-import general.Symbol;
-import general.Transitions;
-import general.Word;
+import general.alphabets.Alphabet;
+
+import general.states.State;
+import general.states.States;
+
+import general.transitions.Transitions;
+
+import general.words.Symbol;
+import general.words.Word;
 
 // Deterministic Finite State Automaton
 public class DFA extends FSA {

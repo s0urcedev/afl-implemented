@@ -1,18 +1,15 @@
 package regular.expressions;
 
-import general.Symbol;
-import regular.Alphabet;
+import general.alphabets.Alphabet;
+
+import general.words.Symbol;
 
 public class REStar extends RE {
     
-    private RE value;
+    public final RE value;
 
     public REStar(RE value) {
         this.value = value;
-    }
-
-    public RE getValue() {
-        return value;
     }
 
     public String toString() {
@@ -25,7 +22,7 @@ public class REStar extends RE {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         REStar rc = (REStar)o;
-        return value.equals(rc.getValue());
+        return value.equals(rc.value);
     }
 
     public boolean fits(Alphabet s) {

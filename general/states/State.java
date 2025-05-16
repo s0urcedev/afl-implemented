@@ -1,4 +1,6 @@
-package general;
+package general.states;
+
+import general.StringWrapper;
 
 public class State extends StringWrapper {
     

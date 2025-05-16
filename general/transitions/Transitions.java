@@ -1,4 +1,4 @@
-package general;
+package general.transitions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 
-import regular.Alphabet;
+import general.alphabets.Alphabet;
+
+import general.states.State;
+import general.states.States;
 
 public class Transitions extends LinkedHashMap<State, LinkedHashMap<TransitionValue, States>> {
 

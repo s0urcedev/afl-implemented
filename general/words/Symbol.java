@@ -1,6 +1,10 @@
-package general;
+package general.words;
 
-import regular.Alphabet;
+import general.StringWrapper;
+
+import general.alphabets.Alphabet;
+
+import general.transitions.TransitionValue;
 
 public class Symbol extends StringWrapper implements TransitionValue {
 

@@ -1,12 +1,14 @@
-package general;
+package general.transitions;
 
 import java.util.Arrays;
 
+import general.states.State;
+
 public class Transition {
 
-    public State q1;
-    public TransitionValue a;
-    public State q2;
+    public final State q1;
+    public final TransitionValue a;
+    public final State q2;
 
     public Transition(State q1, TransitionValue a, State q2) {
         this.q1 = q1;

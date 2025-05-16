@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public class StringWrapper {
     
-    private String value;
+    public final String value;
 
     public StringWrapper(String value) {
         this.value = value;

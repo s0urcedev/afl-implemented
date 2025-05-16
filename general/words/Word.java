@@ -1,8 +1,10 @@
-package general;
+package general.words;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
+import general.StringWrapper;
 
 public class Word extends ArrayList<Symbol> {
     

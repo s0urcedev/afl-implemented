@@ -1,4 +1,4 @@
-package general;
+package general.automatons;
 
 import general.words.Word;
 

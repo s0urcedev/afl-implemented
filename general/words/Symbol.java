@@ -2,9 +2,9 @@ package general.words;
 
 import general.StringWrapper;
 
-import general.alphabets.Alphabet;
+import general.automatons.alphabets.Alphabet;
 
-import general.transitions.TransitionValue;
+import general.automatons.transitions.TransitionValue;
 
 public class Symbol extends StringWrapper implements TransitionValue {
 

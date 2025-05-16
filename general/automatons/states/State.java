@@ -1,4 +1,4 @@
-package general.states;
+package general.automatons.states;
 
 import general.StringWrapper;
 

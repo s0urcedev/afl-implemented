@@ -1,4 +1,4 @@
-package general.states;
+package general.automatons.states;
 
 import java.util.Arrays;
 import java.util.Collection;

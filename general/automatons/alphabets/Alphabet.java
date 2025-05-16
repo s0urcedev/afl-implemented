@@ -1,4 +1,4 @@
-package general.alphabets;
+package general.automatons.alphabets;
 
 import java.util.Arrays;
 import java.util.Collection;

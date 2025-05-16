@@ -1,8 +1,8 @@
-package general.transitions;
+package general.automatons.transitions;
 
 import java.util.Arrays;
 
-import general.states.State;
+import general.automatons.states.State;
 
 public class Transition {
 

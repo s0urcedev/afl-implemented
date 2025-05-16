@@ -1,6 +1,6 @@
 package regular.expressions;
 
-import general.transitions.TransitionValue;
+import general.automatons.transitions.TransitionValue;
 
 import general.words.Symbol;
 import general.words.Word;

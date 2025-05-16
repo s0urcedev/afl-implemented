@@ -1,6 +1,6 @@
 package regular.expressions;
 
-import general.alphabets.Alphabet;
+import general.automatons.alphabets.Alphabet;
 
 import general.words.Symbol;
 

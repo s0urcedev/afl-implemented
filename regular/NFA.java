@@ -4,13 +4,13 @@ import java.util.Queue;
 
 import general.StringWrapper;
 
-import general.alphabets.Alphabet;
+import general.automatons.alphabets.Alphabet;
 
-import general.states.State;
-import general.states.States;
+import general.automatons.states.State;
+import general.automatons.states.States;
 
-import general.transitions.Transition;
-import general.transitions.Transitions;
+import general.automatons.transitions.Transition;
+import general.automatons.transitions.Transitions;
 
 import general.words.Symbol;
 import general.words.Word;

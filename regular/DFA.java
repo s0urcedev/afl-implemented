@@ -1,49 +1,27 @@
 package regular;
 
-// deterministic final state automaton
-public class DFA {
+import general.*;
+import general.States;
+import general.Symbol;
+import general.Transitions;
+import general.Word;
 
-    protected Alphabet s;
-    protected States q;
-    protected String q0;
-    protected Transitions d;
-    protected States f;
+// Deterministic Finite State Automaton
+public class DFA extends FSA {
     
-    public DFA(Alphabet s, States q, String q0, Transitions d, States f) {
-        if (!q.contains(q0)) throw new IllegalArgumentException("States set must contain initial state");
-        if (!d.fitsStates(q)) throw new IllegalArgumentException("States set must contain all states from transitions");
-        if (!d.fitsAlphabet(s)) throw new IllegalArgumentException("Alphabet must contain all letters from transitions");
-        if (!d.isDeterministic()) throw new IllegalArgumentException("FSA must be deterministic");
-        if (!q.containsAll(f)) throw new IllegalArgumentException("States set must contain all final states");
-
-        this.s = s;
-        this.q = q;
-        this.q0 = q0;
-        this.d = d;
-        this.f = f;
+    public DFA(Alphabet s, States q, State q0, Transitions d, States f) {
+        super(s, q, q0, d, f);
+        if (s.hasEpsilon()) throw new IllegalArgumentException("Alphabet must not contain epsilons");
+        if (d.hasEpsilon()) throw new IllegalArgumentException("DFA must not have epsilon transitions");
+        if (!d.onlyContains(new Class<?>[] {Symbol.class})) throw new IllegalArgumentException("DFA must only contain symbols as transitions");
+        if (!d.isDeterministic()) throw new IllegalArgumentException("DFA must be deterministic");
     }
 
-    public Alphabet getAlphabet() {
-        return new Alphabet(s);
-    }
-
-    public States getStates() {
-        return new States(q);
-    }
-
-    public String getInitialState() {
-        return q0;
-    }
-
-    public States getFinalStates() {
-        return new States(f);
-    }
-
-    public boolean checkWord(String[] word) {
-        String qc = q0;
-        for (String w: word) {
-            if (!d.hasTransitions(qc, w)) return false;
-            qc = d.getToStates(qc, w)[0];
+    public boolean checkWord(Word word) {
+        State qc = q0;
+        for (Symbol w: word) {
+            if (!d.has(qc, w)) return false;
+            qc = Transitions.getToStates(d.get(qc, w))[0];
         }
         return f.contains(qc);
     }

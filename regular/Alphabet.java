@@ -2,22 +2,35 @@ package regular;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
-public class Alphabet extends HashSet<String> {
+import general.Symbol;
+
+public class Alphabet extends LinkedHashSet<Symbol> {
 
     public Alphabet() {
         super();
-        super.add(null);
     }
 
-    public Alphabet(Collection<String> lettersCollection) {
+    public Alphabet(Collection<Symbol> symbolsCollection) {
         this();
-        super.addAll(lettersCollection);
+        super.addAll(symbolsCollection);
     }
 
-    public Alphabet(String[] lettersArray) {
-        this(Arrays.asList(lettersArray));
+    public Alphabet(Symbol[] symbolsArray) {
+        this(Arrays.asList(symbolsArray));
+    }
+
+    public Alphabet(String[] symbolsArray) {
+        this(Arrays.asList(symbolsArray).stream().map(Symbol::new).toList());
+    }
+
+    public void add(String a) {
+        this.add(new Symbol(a));
+    }
+
+    public boolean hasEpsilon() {
+        return super.contains(null);
     }
 
 }
